@@ -1,0 +1,134 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.buttcont {
+    display: inline-block;
+}
+
+.container {
+    text-align: left;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+}
+
+h1 {
+    color: #333;
+}
+
+.player-stack {
+    margin-bottom: 20px;
+}
+
+.player {
+    margin: 10px 0; 
+}
+
+label {
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+input {
+    width: 60px;
+    padding: 5px;
+    text-align: right;
+}
+
+.pot {
+    margin-bottom: 20px;
+}
+
+#button-container {
+    display: inline;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #6cbd6f;
+}
+
+.startButton {
+    background-color: hsl(193, 61%, 26%);
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+.startButton:hover {
+    background-color: hsl(193, 54%, 43%);
+}
+
+.callButton {
+    background-color: hsl(120, 1%, 32%);
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+.callButton:hover {
+    background-color: hsl(0, 0%, 60%);
+}
+
+.folded {
+    color:hsl(0, 0%, 60%);
+}
+
+.foldButton {
+    background-color: hsl(0, 68%, 53%);
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+
+
+.foldButton:hover {
+    background-color: hsl(0, 100%, 23%);
+}
+
+/* Dealer Button Styling */
+.dealer-button {
+    width: 25px;                /* Set a reasonable size for the button */
+    height: 25px;
+    background-color: #fff;     /* White background for visibility */
+    border-radius: 50%;         /* Makes the button circular */
+    border: 3px solid #f2c94c;  /* Goldish border for distinction */
+    font-size: 18px;            /* Font size to make text clear */
+    font-weight: bold;          /* Bold text for emphasis */
+    color: #f2c94c;             /* Gold color for the text to match the border */
+    display: flex;              /* Using flex to center the text inside */
+    align-items: center;        /* Vertically center the text */
+    justify-content: center;    /* Horizontally center the text */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Slight shadow for depth */
+    transition: transform 0.3s, box-shadow 0.3s; /* Add transition effects */
+    display: inline-flex;
+    cursor:default;
+  }
