@@ -8,8 +8,11 @@ todo list:
 [x] only display buttons for current player
 [x] add fold button
 [x] add check button to the call button
+[x] create add player button
+[x] create remove player button
+[ ] support removing specific player
+[ ] change player names
 [ ] add rounds (preflop, flop, turn, river)
-[ ] add all in button  (meh)
 [ ] resolve side pots
 */
 
@@ -250,5 +253,25 @@ function addButtons(playerNum) {
   }
 
 function removePlayer() {
+    console.log("Player being added");
+    
+    let playerNumber = numPlayers;
+    let playerid = `player${playerNumber}`;
+    let containerId = "player-container";
+  
+    // Find the player element by ID
+    const playerHTML = document.getElementById(playerid);
+    if (playerHTML) {
+        // Append the HTML to the container
+        playerHTML.remove();
+        console.log(`Player ${playerNumber} HTML removed`);
+        
+        delete playerStacks[playerid];
+        delete alreadyAdded[playerid];
+        delete folded[playerid];
+        numPlayers--;
 
+    } else {
+        console.error(`Player with ID "${playerid}" not found.`);
+    }
 }
