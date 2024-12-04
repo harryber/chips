@@ -18,7 +18,7 @@ body {
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 300px;
+    width: 400px;
 }
 
 h1 {
@@ -27,10 +27,12 @@ h1 {
 
 .player-stack {
     margin-bottom: 20px;
+    display: block;
 }
 
 .player {
     margin: 10px 0; 
+    display: inline-block;
 }
 
 label {
@@ -108,7 +110,9 @@ button:hover {
     border-radius: 5px;
 }
 
-
+.optionButton {
+    display: inline-block;
+}
 
 .foldButton:hover {
     background-color: hsl(0, 100%, 23%);

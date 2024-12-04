@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <button onclick="addPlayer()">+</button>
-    <button class="foldButton" onclick="removePlayer()">x</button>
+    
+    
     <div class="container">
         <h1>Poker Tracker</h1>
         
@@ -16,24 +16,10 @@
         <div class="player-stack" id="player-container">
             <h2>Player Stack Sizes</h2>
             <div class="player" id="player1">
-                <label class="" id="l1">Player 1 Stack: $</label>
+                <div class="buttcont" id="dealer-container1"></div>
+                <label id="l1">Player 1 Stack: $</label>
                 <input type="number" id="stack1" value="1000">
                 <div class="buttcont" id="button-container1"></div>
-            </div>
-            <div class="player" id="player2">
-                <label class="" id="l2">Player 2 Stack: $</label>
-                <input type="number" id="stack2" value="1000">
-                <div class="buttcont" id="button-container2"></div>
-            </div>
-            <div class="player" id="player3">
-                <label class="" id="l3">Player 3 Stack: $</label>
-                <input type="number" id="stack3" value="1000">
-                <div class="buttcont" id="button-container3"></div>
-            </div>
-            <div class="player" id="player4">
-                <label class="" id="l4">Player 4 Stack: $</label>
-                <input type="number" id="stack4" value="1000">
-                <div class="buttcont" id="button-container4"></div>
             </div>
         </div>
         
@@ -41,18 +27,18 @@
         <div class="pot">
             <h2>Pot: $<span id="pot">0</span></h2>
         </div>
-        <div>
-            <button class="payButton" onclick="pay(1)">1</button>
-            <button class="payButton" onclick="pay(2)">2</button>
-            <button class="payButton" onclick="pay(3)">3</button>
-            <button class="payButton" onclick="pay(4)">4</button>
+        <div id="pay-container">
+            <button id="pay1" class="payButton" onclick="pay(1)">1</button>
         </div>
 
         <div>
             <button class="startButton" onclick="blinds()">Start Hand</button>
         </div>
 
-        <!-- Actions for Betting -->
+        <div id="add-remove-player-container">
+            <button onclick="addPlayer()">Add Player</button>
+            <button class="foldButton" onclick="removePlayer()">Remove Player</button>
+        </div>
         
     </div>
 
