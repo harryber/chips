@@ -10,6 +10,7 @@ body {
 
 .buttcont {
     display: inline-block;
+
 }
 
 .container {
@@ -18,7 +19,16 @@ body {
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 400px;
+    width: 350px;
+}
+
+.container-options {
+    text-align: center;
+    padding: 20px;
+    background-color: #cdcdcd;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100px;
 }
 
 h1 {
@@ -27,7 +37,7 @@ h1 {
 
 .player-stack {
     margin-bottom: 20px;
-    display: block;
+    display: grid;
 }
 
 .player {
@@ -110,13 +120,30 @@ button:hover {
     border-radius: 5px;
 }
 
+.foldButton:hover {
+    background-color: hsl(0, 100%, 23%);
+}
+
+
+.disabled {
+    background-color: hsl(0, 0%, 21%);
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: unset;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+.disabled:hover {
+    cursor: unset;
+    background-color: hsl(0, 0%, 21%);
+}
+
 .optionButton {
     display: inline-block;
 }
 
-.foldButton:hover {
-    background-color: hsl(0, 100%, 23%);
-}
 
 /* Dealer Button Styling */
 .dealer-button {

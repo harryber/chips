@@ -75,12 +75,29 @@ function callBet(playerNum) {
 
 function fold(playerNum) {
     folded[getPlayerID(playerNum)] = true;
-    
+    document.getElementById(`stack${playerNum}`).classList.add("folded");
+    document.getElementById(`pay${playerNum}`).classList.add("disabled");
     checkForEndOfTurn();
 }
 
 // NEED TO ALLOW FOR THE LAST PERSON TO RAISE
 function checkForEndOfTurn() {
+    let playersAlive = 0;
+    let alivePlayer = -1;
+
+    for (let i = 1; i <= numPlayers; i++) {
+        if (!folded[getPlayerID(i)]) {
+            playersAlive++;
+            alivePlayer = i;
+        }
+    }
+
+    if (playersAlive < 2) {
+        console.log("Alive player: ", alivePlayer);
+        pay(alivePlayer);
+        return;
+    }
+
     let nextTurnNum = turn + 1 > numPlayers ? 1 : turn + 1;
     console.log(`Turn: ${turn}, Raiser: ${raiser}`);
 
@@ -95,6 +112,8 @@ function checkForEndOfTurn() {
 
 function pay(playerNum) {
     const playerid = getPlayerID(playerNum);
+
+    if (folded[playerid]) return;
 
     playerStacks[playerid] += pot;
     pot = 0;
@@ -113,9 +132,11 @@ function pay(playerNum) {
 function resetRound(full) {
     prevBet = 0;
     if (full) {
-        for (let i = 1; i <= numPlayers; i++) {
-            alreadyAdded[getPlayerID(i)] = 0;
-            folded[getPlayerID(i)] = false;
+        for (let playerNum = 1; playerNum <= numPlayers; playerNum++) {
+            alreadyAdded[getPlayerID(playerNum)] = 0;
+            folded[getPlayerID(playerNum)] = false;
+            document.getElementById(`stack${playerNum}`).classList.remove("folded");
+            document.getElementById(`pay${playerNum}`).classList.remove("disabled");
         }
     } else {
         // set current turn to dealer + 1
@@ -140,7 +161,7 @@ function blinds() {
     disableAddRemovePlayers();
 
     nextDealer();
-    turn = dealer;
+    
 
     // set initial call value to blind value
     prevBet = BIG_BLIND;
@@ -166,7 +187,7 @@ function blinds() {
 
 
 function renderStackandPot(playerNum) {
-    document.getElementById("stack" + playerNum).value = playerStacks[getPlayerID(playerNum)];
+    document.getElementById("stack" + playerNum).innerText = playerStacks[getPlayerID(playerNum)];
     document.getElementById("pot").textContent = pot;
 }
 
@@ -189,7 +210,8 @@ function nextDealer() {
     }
 
     dealer = dealer + 1 > numPlayers ? 1 : dealer + 1;
-
+    turn = dealer;
+    
     // Create the dealer button
     let dealerButton = document.createElement("div");
     dealerButton.textContent = "D";
@@ -257,8 +279,8 @@ function addButtons(playerNum) {
     const playerHTML = `
       <div class="player" id="${playerid}">
         <div class="buttcont" id="dealer-container${playerNum}"></div>
-        <label id="l${playerNum}">Player ${playerNum} Stack: $</label>
-        <input type="number" id="stack${playerNum}" value="${STARTING_STACK}">
+        <input type="text" id="l${playerNum}" value="Name">
+        <label id="stack${playerNum}">${STARTING_STACK}</label>
         <div class="buttcont" id="button-container${playerNum}"></div>
       </div>
     `;
@@ -316,25 +338,34 @@ function removePlayer() {
 }
 
 function enableAddRemovePlayers() {
-    const containerid = "add-remove-player-container";
-    const container = document.getElementById(containerid);
+    const addButtonID = "add-button";
+    const removeButtonID = "remove-button";
+    const startButtonID = "start-button";
+    const addButton = document.getElementById(addButtonID);
+    const removeButton = document.getElementById(removeButtonID);
+    const startButton = document.getElementById(startButtonID);
 
-    if (container) {
-        container.innerHTML = `
-            <button onclick="addPlayer()">Add Player</button>
-            <button class="foldButton" onclick="removePlayer()">Remove Player</button>
-        `;
+    if (addButton && removeButton && startButton) {
+        addButton.classList.remove("disabled");
+        removeButton.classList.remove("disabled");
+        startButton.classList.remove("disabled");
     } else {
         console.error(`Add and Remove container not found`);
     }
 }
 
 function disableAddRemovePlayers() {
-    const containerid = "add-remove-player-container";
-    const container = document.getElementById(containerid);
+    const addButtonID = "add-button";
+    const removeButtonID = "remove-button";
+    const startButtonID = "start-button";
+    const addButton = document.getElementById(addButtonID);
+    const removeButton = document.getElementById(removeButtonID);
+    const startButton = document.getElementById(startButtonID);
 
-    if (container) {
-        container.innerHTML = "";
+    if (addButton && removeButton && startButton) {
+        addButton.classList.add("disabled");
+        removeButton.classList.add("disabled");
+        startButton.classList.add("disabled");
     } else {
         console.error(`Add and Remove container not found`);
     }

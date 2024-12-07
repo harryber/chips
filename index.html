@@ -8,17 +8,24 @@
 </head>
 <body>
     
+    <div class="container-options">
+        <div id="add-remove-player-container">
+            <button id="add-button" onclick="addPlayer()">Add Player</button>
+            <button id="remove-button" class="foldButton" onclick="removePlayer()">Remove Player</button>
+            <button id="start-button" class="startButton" onclick="blinds()">Start Hand</button>
+        </div>
+    </div>
     
     <div class="container">
-        <h1>Poker Tracker</h1>
+        <h1>Chips</h1>
         
         <!-- Player's Stack Sizes -->
         <div class="player-stack" id="player-container">
             <h2>Player Stack Sizes</h2>
             <div class="player" id="player1">
-                <div class="buttcont" id="dealer-container1"></div>
-                <label id="l1">Player 1 Stack: $</label>
-                <input type="number" id="stack1" value="1000">
+                <div class="buttcont" id="dealer-container1" ></div>
+                <input type="text" id="l1" value="Name">
+                <label id="stack1">1000</label>
                 <div class="buttcont" id="button-container1"></div>
             </div>
         </div>
@@ -30,16 +37,6 @@
         <div id="pay-container">
             <button id="pay1" class="payButton" onclick="pay(1)">1</button>
         </div>
-
-        <div>
-            <button class="startButton" onclick="blinds()">Start Hand</button>
-        </div>
-
-        <div id="add-remove-player-container">
-            <button onclick="addPlayer()">Add Player</button>
-            <button class="foldButton" onclick="removePlayer()">Remove Player</button>
-        </div>
-        
     </div>
 
     <script src="script.js"></script>
